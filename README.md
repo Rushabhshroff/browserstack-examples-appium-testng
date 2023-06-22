@@ -25,12 +25,6 @@ The Appium tests are run on different platforms like on-prem and BrowserStack us
      mvn install -DskipTests
     ```
 
-  Gradle:
-
-    ```sh
-     gradle clean build
-    ```
-
 
 ## Test Reporting
 
