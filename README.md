@@ -103,7 +103,7 @@ In this section, we will run a single test on an Android device on Browserstack.
 
   iOS:
   ```sh
-  mvn clean test -P sample -Dbrowserstack.config=configs/browserstack-android.yml
+  mvn clean test -P sample -Dbrowserstack.config=configs/browserstack-ios.yml
   ```
 
 
