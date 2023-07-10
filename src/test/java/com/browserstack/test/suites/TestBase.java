@@ -34,6 +34,7 @@ public class TestBase {
         MutableCapabilities capabilities = new MutableCapabilities();
         HashMap<String, String> bstackOptions = new HashMap<>();
         bstackOptions.putIfAbsent("source", "testng-java:sample-sdk:v1.0");
+        capabilities.setCapability("appium:espressoBuildConfig","{ \"additionalAppDependencies\": [ \"com.google.android.material:material:1.0.0\", \"androidx.lifecycle:lifecycle-extensions:2.1.0\", \"composeVersion\":\"1.2.1\",\"androidx.savedstate:savedstate-ktx:1.2.1\"] }");
         capabilities.setCapability("bstack:options", bstackOptions);
         driver = new AppiumDriver(new URL("https://hub.browserstack.com/wd/hub"), capabilities);
 

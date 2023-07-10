@@ -103,7 +103,7 @@ In this section, we will run a single test on an Android device on Browserstack.
 
   iOS:
   ```sh
-  mvn clean test -P sample -Dbrowserstack.config=configs/browserstack-android.yml
+  mvn clean test -P sample -Dbrowserstack.config=configs/browserstack-ios.yml
   ```
 
 
@@ -127,6 +127,29 @@ In this section, we will run a single test on an Android device on Browserstack.
   ```sh
   mvn allure:serve
   ```
+
+## Build Espresso Server
+
+#### Start Appium Locally
+- ```git clone -b releases/1.22 git@github.com:appium/appium.git ```
+- Replace the content in the package.json file of the cloned repository with the following content.
+  ```"appium-espresso-driver": "2.7.0",```
+- In your terminal/command-line, run ```npm install``` in the appium directory
+- Run ``` node build/lib/main.js --log-timestamp``` in the appium directory
+
+#### Build Espresso Server
+- Update ```appium:espressoBuildConfig``` in [espresso-app-builder.js](/espresso-app-builder.js) as per your application dependencies.
+- Run ```npm install``` in the project directory
+- Run ```node espresso-app-builder.js``` to start building the espresso server apk
+- In the console where appium is running look for the following line ```Copying built apk from '/var/folders/22/9dxnk2js3274f0l_64mmd8bw0000gn
+  /T/espresso-server-RZ8R704ZZCY/app/build/outputs/apk/androidTest/debug
+  /app-debug-androidTest.apk' to '/var/folders/22
+  /9dxnk2js3274f0l_64mmd8bw0000gn/T/io.appium.espressoserver.test_2.7.0
+  _com.example.jetpackcomposeplayground_RZ8R704ZZCY.apk'```
+- Copy this apk file to a directory in your project
+- Follow steps as per the [documentation](https://www.browserstack.com/docs/app-automate/espresso/appium-espresso-driver#:~:text=Copy%20the%20APK%20at%20path1%20/%20path2)
+- Update the espresso server url received in the [config](/configs/browserstack-android.yml)
+  
 
 ## Additional Resources
 
